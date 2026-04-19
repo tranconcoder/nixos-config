@@ -196,6 +196,8 @@
       }
 
       windowrule = opaque, class:.*
+
+      exec-once = wlsunset -l 10.8 -L 106.7
     '';
   };
 }

@@ -69,6 +69,7 @@
     kdePackages.kate
     vscode-with-extensions
     antigravity
+    wlsunset
   ];
 
   hydenix = {

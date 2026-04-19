@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -29,6 +29,11 @@
       themes = [ "Catppuccin Mocha" "Catppuccin Latte" ];
     };
   };
+
+  home.packages = [
+    pkgs.pnpm
+    pkgs.bun
+  ];
 
   programs.zsh = {
     enable = true;
