@@ -250,13 +250,17 @@
     "nvim-v2": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-sOglV/zBjN5sPxhlC1WRMan5DrF7RPXlH/24r4lsyd8=",
-        "type": "file",
-        "url": "https://github.com/tranconcoder/nvim-v2.git"
+        "lastModified": 1776391824,
+        "narHash": "sha256-d6FYcRNiJCpNlKwuUvYB0fnDw7zbfb6IGmsZcDjEwA8=",
+        "owner": "tranconcoder",
+        "repo": "nvim-v2",
+        "rev": "5f40ea6b1a8ab2c6ecba40ca101cbc7f4c36a973",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://github.com/tranconcoder/nvim-v2.git"
+        "owner": "tranconcoder",
+        "repo": "nvim-v2",
+        "type": "github"
       }
     },
     "root": {

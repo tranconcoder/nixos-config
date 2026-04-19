@@ -70,6 +70,7 @@
     vscode-with-extensions
     antigravity
     wlsunset
+    lazygit
   ];
 
   hydenix = {

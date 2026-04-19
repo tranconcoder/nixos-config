@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -6,6 +6,7 @@
     ./kitty.nix
     ./theme.nix
     ./fcitx5.nix
+    ./nvim.nix
   ];
 
   hydenix.hm = {
