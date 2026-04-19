@@ -247,6 +247,18 @@
         "type": "github"
       }
     },
+    "nvim-v2": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-sOglV/zBjN5sPxhlC1WRMan5DrF7RPXlH/24r4lsyd8=",
+        "type": "file",
+        "url": "https://github.com/tranconcoder/nvim-v2.git"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/tranconcoder/nvim-v2.git"
+      }
+    },
     "root": {
       "inputs": {
         "hydenix": "hydenix",
@@ -254,7 +266,8 @@
         "nixpkgs": [
           "hydenix",
           "nixpkgs"
-        ]
+        ],
+        "nvim-v2": "nvim-v2"
       }
     },
     "rust-overlay": {

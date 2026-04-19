@@ -28,6 +28,27 @@
       imports = [
         inputs.hydenix.homeModules.default
         ./modules/hm
+        {
+          home.file = {
+            ".env".text = ''
+              # OpenCode MCP API Keys
+              CONTEXT7_API_KEY=
+              MEM0_API_KEY=
+            '';
+            ".config/opencode/opencode.json".text = ''
+              {
+                "$schema": "https://opencode.ai/config.json",
+                "mcp": {
+                  "context7": {
+                    "type": "remote",
+                    "url": "https://mcp.context7.com/mcp"
+                  }
+                }
+              }
+            '';
+            ".config/nvim".source = inputs.nvim-v2.outPath;
+          };
+        }
       ];
     };
   };

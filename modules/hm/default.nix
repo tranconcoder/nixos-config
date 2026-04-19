@@ -30,6 +30,14 @@
     };
   };
 
+  programs.zsh = {
+    enable = true;
+    initExtra = ''
+      # Clear screen truly (not scroll down)
+      clear() { printf "\033[2J\033[H\033[3J"; }
+    '';
+  };
+
   home.file = {
     ".config/hypr/nvidia.conf".text = "";
   };

@@ -7,6 +7,8 @@
     };
     hydenix.url = "github:richen604/hydenix";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
+    nvim-v2.url = "https://github.com/tranconcoder/nvim-v2.git";
+    nvim-v2.flake = false;
   };
 
   outputs = { ... }@inputs: {
