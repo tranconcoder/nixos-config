@@ -46,7 +46,7 @@
                 }
               }
             '';
-            ".config/nvim".source = inputs.nvim-v2.outPath;
+            
           };
         }
       ];
@@ -71,6 +71,12 @@
     antigravity
     wlsunset
     lazygit
+    vlc
+    dbeaver-bin
+    postman
+    _7zz
+    nodejs_22
+    bun
   ];
 
   hydenix = {
