@@ -247,22 +247,6 @@
         "type": "github"
       }
     },
-    "nvim-v2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1776391824,
-        "narHash": "sha256-d6FYcRNiJCpNlKwuUvYB0fnDw7zbfb6IGmsZcDjEwA8=",
-        "owner": "tranconcoder",
-        "repo": "nvim-v2",
-        "rev": "5f40ea6b1a8ab2c6ecba40ca101cbc7f4c36a973",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tranconcoder",
-        "repo": "nvim-v2",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "hydenix": "hydenix",
@@ -271,7 +255,7 @@
           "hydenix",
           "nixpkgs"
         ],
-        "nvim-v2": "nvim-v2"
+        "sops-nix": "sops-nix"
       }
     },
     "rust-overlay": {
@@ -289,6 +273,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1776771786,
+        "narHash": "sha256-DRFGPfFV6hbrfO9a1PH1FkCi7qR5FgjSqsQGGvk1rdI=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "bef289e2248991f7afeb95965c82fbcd8ff72598",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
         "type": "github"
       }
     }

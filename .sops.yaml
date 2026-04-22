@@ -1,0 +1,7 @@
+keys:
+  - &user_tvconss age1k88fec5c0wtf5lz0vunpeyuca63gyn7f7crx4kkjf9krh4nf6pss443qr5
+creation_rules:
+  - path_regex: secrets/secrets\.yaml$
+    key_groups:
+      - age:
+          - *user_tvconss

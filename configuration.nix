@@ -13,6 +13,9 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking.firewall.allowedTCPPorts = [ 8081 ];
+  networking.firewall.allowedUDPPorts = [ 8081 ];
+
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -24,32 +27,44 @@
     useUserPackages = true;
     backupFileExtension = "backup";
     extraSpecialArgs = { inherit inputs; };
-    users.tvconss = { ... }: {
+    users.tvconss = { config, lib, ... }: {
       imports = [
         inputs.hydenix.homeModules.default
+        inputs.sops-nix.homeManagerModules.sops
         ./modules/hm
-        {
-          home.file = {
-            ".env".text = ''
-              # OpenCode MCP API Keys
-              CONTEXT7_API_KEY=
-              MEM0_API_KEY=
-            '';
-            ".config/opencode/opencode.json".text = ''
-              {
-                "$schema": "https://opencode.ai/config.json",
-                "mcp": {
-                  "context7": {
-                    "type": "remote",
-                    "url": "https://mcp.context7.com/mcp"
-                  }
-                }
-              }
-            '';
-            
-          };
-        }
       ];
+
+      sops = {
+        age.keyFile = "/home/tvconss/.config/sops/age/keys.txt";
+        defaultSopsFile = "${inputs.self}/secrets/secrets.yaml";
+        secrets = {
+          context7_api_key = {};
+          mem0_api_key = {};
+        };
+      };
+
+      home.activation.createEnvFile = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        rm -f ~/.env
+        cat > ~/.env <<EOF
+CONTEXT7_API_KEY=$(cat ${config.sops.secrets.context7_api_key.path})
+MEM0_API_KEY=$(cat ${config.sops.secrets.mem0_api_key.path})
+EOF
+        chmod 600 ~/.env
+      '';
+
+      home.file = {
+        ".config/opencode/opencode.json".text = ''
+          {
+            "$schema": "https://opencode.ai/config.json",
+            "mcp": {
+              "context7": {
+                "type": "remote",
+                "url": "https://mcp.context7.com/mcp"
+              }
+            }
+          }
+        '';
+      };
     };
   };
 

@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -14,6 +14,7 @@
     hyde.enable = true;
     hyprland.enable = true;
     dolphin.enable = true;
+    firefox.enable = false;
 
     terminals.kitty.enable = true;
     git.enable = true;

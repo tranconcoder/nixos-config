@@ -7,14 +7,16 @@
     };
     hydenix.url = "github:richen604/hydenix";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
-    nvim-v2.url = "github:tranconcoder/nvim-v2";
-    nvim-v2.flake = false;
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { ... }@inputs: {
+  outputs = { self, ... }@inputs: {
     nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs self; };
       modules = [
         ./configuration.nix
       ];
