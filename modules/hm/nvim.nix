@@ -1,22 +1,17 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
-  nvimRepo = builtins.fetchGit {
-    url = "https://github.com/tranconcoder/nvim-v2";
-    ref = "main";
-  };
-  nvimConfig = pkgs.runCommand "nvim-config" {} ''
-    cp -rL ${nvimRepo} $out
-    chmod -R +w $out
-    rm -rf $out/src
-  '';
+  # Local nvim config stored in flake
+  nvimConfig = ./nvim-config;
 in
 
 {
-  home.file = {
-    ".config/nvim" = {
-      source = nvimConfig;
-      recursive = true;
-    };
-  };
+  home.activation.copyNvimConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    rm -rf ~/.config/nvim
+    cp -rL ${nvimConfig} ~/.config/nvim
+    chmod -R +w ~/.config/nvim
+    
+    # Ensure parsers directory exists for treesitter
+    mkdir -p ~/.local/share/nvim/lazy/nvim-treesitter/parser
+  '';
 }
